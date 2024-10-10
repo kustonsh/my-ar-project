@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AR Dish</title>
+    <title>AR Dish - Image Tracking</title>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="https://cdn.rawgit.com/jeromeetienne/ar.js/1.7.2/aframe/build/aframe-ar.min.js"></script>
+    <script src="https://cdn.rawgit.com/jeromeetienne/ar.js/3.3.2/aframe/build/aframe-ar-nft.min.js"></script>
 </head>
 <body style="margin: 0; overflow: hidden;">
-    <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
-        <!-- Use your custom QR code pattern marker -->
-        <a-marker type="pattern" url="pattern-qr-code.patt">
-            <!-- Scale reduced to 0.5, and position adjusted for better visibility -->
-            <a-entity gltf-model="url(model.gltf)" scale="2 2 2" position="0 1 0"></a-entity>
-        </a-marker>
+    <a-scene embedded arjs="trackingMethod: best; sourceType: webcam;">
+        <!-- Image tracking using targets.mind file -->
+        <a-nft type="nft" url="targets.mind" smooth="true" smoothCount="10" smoothTolerance="0.01" smoothThreshold="5">
+            <!-- 3D model (your dish) loaded here -->
+            <a-entity gltf-model="url(model.gltf)" scale="1 1 1" position="0 0 0"></a-entity>
+        </a-nft>
         <a-entity camera></a-entity>
     </a-scene>
 </body>
